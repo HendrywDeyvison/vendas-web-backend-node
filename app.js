@@ -6,9 +6,9 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.get('/user', (req, res) => {
+app.get('/user/:nome', (req, res) => {
     res.send({
-        "user": "Root"
+        "user": req.params.nome,
     });
 });
 

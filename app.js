@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express'
 
-const app = express();
+const app = express()
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 
 app.get('/user/:nome', (req, res) => {
     res.send({
-        "user": req.params.nome,
+        "user": req.params.nome
     });
 });
 

@@ -1,16 +1,11 @@
 import express from "express";
+import { userRouter } from "./modules/user/user.controller.js";
+import { productRouter } from "./modules/product/product.controller.js";
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.get("/user/:nome", (req, res) => {
-  res.send({
-    user: req.params.nome,
-  });
-});
+app.use(userRouter);
+app.use(productRouter);
 
 app.listen(8080, () => {
   console.log("Server app running on port 8080!");

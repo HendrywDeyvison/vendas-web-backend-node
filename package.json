@@ -1,12 +1,15 @@
 {
   "name": "node-vendas-web-react-typescript",
   "version": "1.0.0",
-  "description": "backend node vendas web",
+  "description": "vendas web backend node",
   "type": "module",
   "main": "teste.js",
   "scripts": {
     "dev": "npx nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "lint:fix": "eslint ./ --ext .jsx,.js,.ts,.tsx --fix --ignore-path ./.gitignore --max-warnings=0",
+    "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
+    "lint": "npm run lint:format && npm run lint:fix "
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +18,7 @@
   },
   "devDependencies": {
     "eslint": "^8.56.0",
+    "eslint-config-eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.0.1",

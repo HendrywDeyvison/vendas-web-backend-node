@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-export const userRouter = Router();
+const userRouter = Router();
 
 const router = Router();
 
@@ -13,3 +13,5 @@ router.get("/", (req, res) => {
 router.get("/:name", (req, res) => {
   res.send(`Username is ${req.params.name}!`);
 });
+
+export default userRouter;

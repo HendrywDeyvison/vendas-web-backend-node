@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 .env
+/build
+/src/routerLoader.ts
 
 # Editor directories and files
 .vscode/*

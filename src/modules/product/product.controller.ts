@@ -16,9 +16,15 @@ router.get("/:product", (_, res: Response): void => {
   res.send(`Product is}`);
 });
 
-// router.post("/", async (req: Request<core.ParamsDictionary, any, ProductInsertDTO>, res: Response): Promise<void> => {
-//   const respCreate = await createProduct(req.body);
-//   res.send(respCreate);
-// });
+router.post(
+  "/",
+  async (
+    req: Request<core.ParamsDictionary, any, ProductInsertDTO>,
+    res: Response,
+  ): Promise<void> => {
+    // const respCreate = await createProduct(req.body);
+    res.send("TESTE");
+  },
+);
 
 export default productRouter;

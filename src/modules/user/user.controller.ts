@@ -14,10 +14,13 @@ router.get("/", async (req: Request, res: Response): Promise<void> => {
   res.send(users);
 });
 
-router.post("/", async (req: Request<core.ParamsDictionary, any, UserInsertDTO>, res: Response): Promise<void> => {
-  const respCreate = await createUser(req.body);
-  res.send(respCreate);
-});
+router.post(
+  "/",
+  async (req: Request<core.ParamsDictionary, any, UserInsertDTO>, res: Response): Promise<void> => {
+    const respCreate = await createUser(req.body);
+    res.send(respCreate);
+  },
+);
 
 router.get("/:name", (req, res) => {
   res.send(`Username is ${req.params.name}!`);

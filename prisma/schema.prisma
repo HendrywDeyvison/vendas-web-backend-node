@@ -8,6 +8,7 @@ model User {
   name  String
   email String @unique
   cpf_cnpj  String @unique
+  password String
   phone String
   typeUser  Int
   createdAt DateTime @default(now())

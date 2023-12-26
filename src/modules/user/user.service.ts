@@ -15,6 +15,25 @@ export const getUsers = async (): Promise<UserModel[]> => {
   return users;
 };
 
+export const getUser = async (
+  id?: number,
+  name?: string,
+  cpf_cnpj?: string,
+): Promise<UserInsertDTO> => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: id,
+      name: name,
+      cpf_cnpj: cpf_cnpj,
+    },
+  });
+  if (!user) {
+    throw new NotFoundException("User");
+  }
+
+  return user;
+};
+
 export const createUser = async (body: UserInsertDTO): Promise<UserModel> => {
   return prisma.user.create({
     data: body,

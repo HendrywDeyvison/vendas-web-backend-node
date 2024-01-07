@@ -34,7 +34,7 @@ router.post(
   },
 );
 
-router.get("/:id", async (req, res) => {
+router.get("/id=:id", async (req, res) => {
   const id = parseInt(req.params.id);
 
   const user = await getUser(id).catch((error) => {
@@ -43,15 +43,15 @@ router.get("/:id", async (req, res) => {
   res.send(user);
 });
 
-router.get("/:name", async (req, res) => {
+router.get("/name=:name", async (req, res) => {
   const name = req.params.name;
-  const user = await getUser(0, name, undefined).catch((error) => {
+  const user = await getUser(undefined, name).catch((error) => {
     new ReturnError(res, error);
   });
   res.send(user);
 });
 
-router.get("/:cpf_cnpj", async (req, res) => {
+router.get("/cpf_cnpj=:cpf_cnpj", async (req, res) => {
   const cpf_cnpj = req.params.cpf_cnpj;
   const user = await getUser(undefined, undefined, cpf_cnpj).catch((error) => {
     new ReturnError(res, error);

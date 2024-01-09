@@ -3,7 +3,7 @@ import { UserModel } from "./user.model";
 import { UserInsertDTO } from "./dtos/user-insert.dto";
 import { NotFoundException } from "@exceptions/not-found-exception";
 import { BadRequestException } from "@exceptions/bad-request-exception";
-import { createPasswordHashed } from "src/utils/password";
+import { createPasswordHashed } from "@utils/password";
 
 const prisma = new PrismaClient();
 
@@ -38,10 +38,25 @@ export const getUser = async (
   return user;
 };
 
+export const getUserByEmail = async (email?: string): Promise<UserModel> => {
+  const user = await prisma.user.findFirstOrThrow({
+    where: {
+      email,
+    },
+  });
+  if (!user) {
+    throw new NotFoundException("User");
+  }
+
+  return user;
+};
+
 export const createUser = async (body: UserInsertDTO): Promise<UserModel> => {
   const userCpfCnpj = await getUser(undefined, undefined, body.cpf_cnpj).catch(() => undefined);
   // eslint-disable-next-line prettier/prettier
-  const userEmail = await getUser(undefined, undefined, undefined, body.email).catch(() => undefined);
+  const userEmail = await getUser(undefined, undefined, undefined, body.email).catch(
+    () => undefined,
+  );
 
   if (userCpfCnpj || userEmail) {
     throw new BadRequestException("User already exists in BD");

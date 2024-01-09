@@ -12,7 +12,7 @@ export class ReturnError {
     this.message = error.message;
 
     if (error instanceof AppException) {
-     this.errorCode = error.errorCode;
+      this.errorCode = error.errorCode;
     }
 
     res.status(this.errorCode || 500).send(this);

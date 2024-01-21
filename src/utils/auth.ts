@@ -22,17 +22,17 @@ export const generateToken = (user: UserModel): string => {
 };
 
 export const verifyToken = async (authorization?: string): Promise<UserAuth> => {
-  if(!authorization){
+  if (!authorization) {
     throw new UnauthorizedException();
   }
 
   const [, token] = authorization.split(" ");
 
-  try{
+  try {
     const decodedToken = <UserAuth>verify(token, PASSWORD_JWT);
-    
-    return decodedToken
-  } catch(error){
+
+    return decodedToken;
+  } catch (error) {
     throw new UnauthorizedException();
   }
-}
+};

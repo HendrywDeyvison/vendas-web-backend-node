@@ -20,7 +20,8 @@
       "@modules/*": ["./src/modules/*"],
       "@exceptions/*": ["./src/exceptions/*"],
       "@utils/*": ["./src/utils/*"],
-      "@middlewares/*": ["./src/middlewares/*"]
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@enums/*": ["./src/enums/*"]
     } /* Enable all strict type-checking options. */ /* Skip type checking all .d.ts files. */
   }
 }

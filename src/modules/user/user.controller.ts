@@ -4,7 +4,7 @@ import * as core from "express-serve-static-core";
 import { UserInsertDTO } from "./dtos/user-insert.dto";
 import { NotFoundException } from "@exceptions/not-found-exception";
 import { ReturnError } from "@exceptions/dtos/return-error.dto";
-import { authMiddleware } from "@middlewares/auth.middleware";
+import { authAdminMiddleware } from "@middlewares/auth-admin.middleware";
 
 const createUserController = async (
   req: Request<core.ParamsDictionary, any, UserInsertDTO>,
@@ -40,7 +40,7 @@ const router = Router();
 userRouter.use("/user", router);
 
 router.post("/", createUserController);
-router.use(authMiddleware);
+router.use(authAdminMiddleware);
 router.get("/", getUsersController);
 router.get("/id=:id", getUserById);
 

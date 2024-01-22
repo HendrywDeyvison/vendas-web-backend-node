@@ -15,7 +15,7 @@ export const authAdminMiddleware = async (
 
   await verifyToken(authorization)
     .then((user: UserAuth) => {
-      if(user.typeUser !== UserTypeEnum.ADMIN){
+      if (user.typeUser !== UserTypeEnum.ADMIN) {
         new ReturnError(res, new UnauthorizedException());
       } else {
         next();

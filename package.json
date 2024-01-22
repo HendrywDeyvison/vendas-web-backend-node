@@ -8,7 +8,9 @@
     "start": "node src/app.ts",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --fix",
     "lint:format": "prettier --log-level warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
-    "lint": "npm run lint:format && npm run lint:fix "
+    "lint": "npm run lint:format && npm run lint:fix ",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migration": "npx prisma migrate dev"
   },
   "author": "",
   "license": "ISC",

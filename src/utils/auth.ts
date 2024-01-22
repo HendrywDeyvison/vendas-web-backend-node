@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+import { Request } from "express";
 import { UnauthorizedException } from "@exceptions/unauthorized-exception";
 import { UserAuth } from "@modules/auth/dtos/user-auth.dto";
 import { UserModel } from "@modules/user/user.model";
@@ -35,4 +35,10 @@ export const verifyToken = async (authorization?: string): Promise<UserAuth> => 
   } catch (error) {
     throw new UnauthorizedException();
   }
+};
+
+export const getUserByToken = async (req: Request): Promise<UserAuth> => {
+  const authorization = req.headers.authorization;
+
+  return verifyToken(authorization);
 };

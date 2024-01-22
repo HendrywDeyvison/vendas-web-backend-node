@@ -7,6 +7,7 @@ import { ReturnError } from "@exceptions/dtos/return-error.dto";
 import { authAdminMiddleware } from "@middlewares/auth-admin.middleware";
 import { authMiddleware } from "@middlewares/auth.middleware";
 import { UserEditPasswordDTO } from "./dtos/user-edit-password.dto";
+import { getUserByToken } from "@utils/auth";
 
 const createUserController = async (
   req: Request<core.ParamsDictionary, any, UserInsertDTO>,
@@ -40,9 +41,9 @@ const editPasswordController = async (
   req: Request<core.ParamsDictionary, undefined, UserEditPasswordDTO>,
   res: Response,
 ): Promise<void> => {
-  const id = parseInt(req.params.id);
+  const userAuth = await getUserByToken(req);
 
-  const user = await editPassword(id, req.body).catch((error) => {
+  const user = await editPassword(userAuth.userId, req.body).catch((error) => {
     return new ReturnError(res, error);
   });
 
